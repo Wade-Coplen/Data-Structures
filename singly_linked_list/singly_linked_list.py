@@ -1,3 +1,4 @@
+
 class Node:
     def __init__(self, value, next_node= None):
         self.value = value
@@ -13,14 +14,14 @@ class Node:
     
 
 class LinkedList:
-    def __init__(self):
+    def __init__(self, node= None):
             # what attributes do we need?
             #set initial state of node
-            self.head = None
-            self.tail = None
+            self.head = node
+            self.tail = node
     def add_to_head(self, value):
         # create a new Node
-        new_node = new Node(value)
+        new_node = Node(value)
         if self.head is None:
             return None
         else:
@@ -47,7 +48,7 @@ class LinkedList:
 
     def remove_head(self):
         # if LL is empty
-        if self.head == None:
+        if self.head is None:
             return None
         else:
             # return the value of the old head
@@ -57,18 +58,27 @@ class LinkedList:
                 self.head = None
                 self.tail = None
             #lists with >2 elements
-        else:
-            self.head = self.head.get_next_node()
-            return return_value
+            else:
+                self.head = self.head.get_next_node()
+                return return_value
     def remove_tail(self):
         # TODO
         # if the there is an empty list?
-
-
+        if self.tail == None:
+            return None
+        else:
+            #value of previous head
+            # return_value = self.head.get.value()
         # list with 1 element?
-
-        # list with >2 elements?
-
+            if self.tail == self.head:
+                self.head = None
+                self.tail = None
+            else:
+            # list with >2 elements?
+                self.head = self.head.get_next_node()
+                return return_value
+                
+        
     def contains(self, value):
         # TODO time permitting
         current_node = self.head
