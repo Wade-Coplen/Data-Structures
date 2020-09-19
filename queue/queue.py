@@ -58,12 +58,11 @@ print('DQ', q.dequeue())
 print('Q', q.storage)
 
 """
+"""
 class Node:
-    __slots__ = 'element', 'next'
-    def __init__(self, value, element, next_node= None):
+    def __init__(self, value, next_node= None):
         self.value = value
         self.next_node = next_node
-        self.element = element
     def get_value(self):
         return self.value
 
@@ -72,7 +71,7 @@ class Node:
 
     def set_next_node(self, new_next):
         self.next_node = new_next
-    
+"""
     
     
 class LinkedList:
@@ -152,6 +151,10 @@ class LinkedList:
     def get_max(self):
         # TODO time permitting
         pass
+
+
+#############LINKED LIST#################
+"""
 class Queue:
     def __init__(self):
         self.size = 0
@@ -199,4 +202,34 @@ q.display()
 q.enqueue(402)
 q.enqueue(403)
 q.display()
+###############################################
+"""
+class Queue:
+    def __init__(self):
+        self.storage = []
+        self.size = 0
+        self.front = 0
+    def __len__(self):
+        return self.size
+    def is_empty(self):
+        return self.size == 0
+    def enqueue(self, element):
+        self.storage.append(element)
+        self.size = self.size + 1
+    def dequeue(self):
+        if self.is_empty():
+            return None
+        value = self.storage[self.front]
+        self.storage[self.front] = None
+        self.front = self.front + 1
+        self.size = self.size - 1
+        return value
+q = Queue()
+q.enqueue(100)
+q.enqueue(200)
+print('Q', q.storage)
+print('L', len(q))
+print('DQ', q.dequeue())
+print('Q', q.storage)
+
 
