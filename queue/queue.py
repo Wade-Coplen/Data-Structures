@@ -204,6 +204,8 @@ q.enqueue(403)
 q.display()
 ###############################################
 """
+
+###########ARRAY###############################
 class Queue:
     def __init__(self):
         self.storage = []
@@ -231,5 +233,6 @@ print('Q', q.storage)
 print('L', len(q))
 print('DQ', q.dequeue())
 print('Q', q.storage)
+##########################################
 
 
