@@ -1,7 +1,8 @@
+
+  
 """
 A queue is a data structure whose primary purpose is to store and
 return elements in First In First Out order. 
-
 1. Implement the Queue class using an array as the underlying storage structure.
    Make sure the Queue tests pass.
 2. Re-implement the Queue class, this time using the linked list implementation
@@ -13,67 +14,8 @@ return elements in First In First Out order.
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
-"""
 
-class Queue:
-    def __init__(self):
-        self.size = 0
-        self.storage = []
-        self.front = 0
-    def __len__(self):
-        return self.size
-    def is_empty(self):
-        return self.size == 0
-
-    def enqueue(self, value):
-        self.storage.append(value)
-        self.size = self.size + 1
-   
-
-    def dequeue(self):
-        if self.is_empty():
-            return None
-        value = self.storage[self.front]
-        self.storage[self.front] = None
-        self.front = self.front +1
-        self.size = self.size -1
-        return value
-    def first(self):
-        if self.is_empty():
-            return None
-        return self.storage[self.front]
-
-q = Queue()
-q.enqueue(5)
-q.enqueue(10)
-print('Q', q.storage)
-print('L', len(q))
-print('DQ', q.dequeue())
-print('Q', q.storage)
-q.enqueue(15)
-q.enqueue(20)
-print('Q', q.storage)
-print('First El', q.first())
-print('DQ', q.dequeue())
-print('Q', q.storage)
-
-"""
-"""
-class Node:
-    def __init__(self, value, next_node= None):
-        self.value = value
-        self.next_node = next_node
-    def get_value(self):
-        return self.value
-
-    def get_next_node(self):
-        return self.next_node
-
-    def set_next_node(self, new_next):
-        self.next_node = new_next
-"""
-    
-    
+###########LINKED LIST ACTUAL
 class LinkedList:
     def __init__(self):
             # what attributes do we need?
@@ -151,32 +93,88 @@ class LinkedList:
     def get_max(self):
         # TODO time permitting
         pass
-
-
-#############LINKED LIST#################
 """
+class Node:
+    __slots__ = 'elements'
+    def __init__(self, value, elements, next_node= None):
+        #self.value = value
+        self.elements = elements
+        self.next_node = next_node
+    def get_value(self):
+        return self.value
+    def get_next_node(self):
+        return self.next_node
+    def set_next_node(self, new_next):
+        self.next_node = new_next
+"""
+"""
+#############ARRAY
 class Queue:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
-        self.head = None
-        self.tail = None
-    
+        self.storage = []
+        self.front = 0
     def __len__(self):
         return self.size
     def is_empty(self):
         return self.size == 0
+    def enqueue(self, value):
+        self.storage.append(value)
+        self.size = self.size + 1
+   
+    def dequeue(self):
+        if self.is_empty():
+            return None
+        value = self.storage[self.front]
+        self.storage[self.front] = None
+        self.front = self.front +1
+        self.size = self.size -1
+        return value
+    def first(self):
+        if self.is_empty():
+            return None
+        return self.storage[self.front]
+q = Queue()
+q.enqueue(5)
+q.enqueue(10)
+print('Q', q.storage)
+print('L', len(q))
+print('DQ', q.dequeue())
+print('Q', q.storage)
+q.enqueue(15)
+q.enqueue(20)
+print('Q', q.storage)
+print('First El', q.first())
+print('DQ', q.dequeue())
+print('Q', q.storage)
 
+
+"""
+#############LINKED LIST#################
+class Queue:
+    class Node:
+        __slots__= 'elements', 'next_node'
+        def __init__(self, elements, next_node=None):
+            self.elements = elements
+            self.next_node = next_node
+            #self.new_node = new_node
+    def __init__(self):
+        self.size = 0
+        self.head = None
+        self.tail = None
+
+    def __len__(self):
+        return self.size
+    def is_empty(self):
+        return self.size == 0
     def enqueue(self, element):
-        new_node = Node(element, None)
+        new_node = self.Node(element, None)
         if self.is_empty():
             self.head = new_node
         else:
-            self.tail.next = new_node
+            self.tail.next_node = new_node
         self.tail = new_node
         self.size = self.size + 1
-
-
     def dequeue(self):
         if self.is_empty():
             return None
@@ -191,7 +189,6 @@ class Queue:
         while temp:
             temp = temp.next_node
             print()
-
 q = Queue()
 q.enqueue(400)
 q.enqueue(401)
@@ -202,10 +199,11 @@ q.display()
 q.enqueue(402)
 q.enqueue(403)
 q.display()
-###############################################
 """
 
-###########ARRAY###############################
+
+
+###########ARRAY
 class Queue:
     def __init__(self):
         self.storage = []
@@ -233,6 +231,5 @@ print('Q', q.storage)
 print('L', len(q))
 print('DQ', q.dequeue())
 print('Q', q.storage)
-##########################################
-
+"""
 
