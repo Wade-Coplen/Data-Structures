@@ -11,7 +11,7 @@ return elements in Last In First Out order.
    implementing a Stack?
 """
 
-
+"""
 class Node:
     def __init__(self, value, next_node= None):
         self.value = value
@@ -24,7 +24,7 @@ class Node:
 
     def set_next_node(self, new_next):
         self.next_node = new_next
-    
+"""
 
 class LinkedList:
     def __init__(self):
@@ -104,9 +104,50 @@ class LinkedList:
         # TODO time permitting
         pass
 
+########lINKED LIST#################
 
+class Stack:        
+    class Node:
+        __slots__= 'element', 'next'
+        def __init__(self, element, next):
+            self.element = element
+            self.next = next
+    def __init__(self):
+        self.head = None
+        self.size = 0
+    def __len__(self):
+        return self.size
+    def is_empty(self):
+        return self.size == 0
+    def push(self, element):
+        self.head = self.Node(element, self.head)
+        self.size = self.size + 1
+    def pop(self):
+        if self.is_empty():
+            return None
+        value = self.head.element
+        self.head = self.head.next
+        self.size = self.size - 1
+        return value
+    def display(self):
+        temp = self.head
+        while temp :
+            print(temp.element, end ='--->')
+            temp = temp.next
+            print()
+s = Stack()
+s.push(40)
+s.push(34)
+s.push(44)
+s.push(35)
+s.display()
+print('pop', s.pop())
+s.display()
+s.push(36)
+s.display()
+###################################
 
-
+########ARRAY######################
 """
 class Empty(Exception):
     pass
@@ -122,10 +163,7 @@ class Stack:
         return len(self.storage)  
         
     def push(self, value):
-        """
-        Push the elements at the Last index
-        :return: None
-        """
+       
         self.storage.append(value)
 
     def pop(self):
@@ -145,17 +183,4 @@ print('Is empty', s.is_empty())
 print('Popped', s.pop())
 print('Stack', s.storage)
 """
-
-class Stack:
-    def __init__(self):
-        self.size = 0
-        # self.storage = ?
-
-    def __len__(self):
-        pass
-
-    def push(self, value):
-        pass
-
-    def pop(self):
-        pass
+################################################
