@@ -1,12 +1,14 @@
+
+
 """
 Each ListNode holds a reference to its previous node
 as well as its next node in the List.
 """
 class ListNode:
     def __init__(self, value, prev=None, next=None):
-        self.prev = prev
-        self.value = value
+        self.prev = prev        
         self.next = next
+        self.value = value
             
 """
 Our doubly-linked list class. It holds references to 
@@ -53,6 +55,14 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
+        #save value to return
+
+        # delete head
+        #update self.head
+        # return value
+        value = self.head.value
+        self.delete(self.head)
+        return value
         pass
             
     """
@@ -96,9 +106,13 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
+        if self.prev:
+            self.prev.next = self.next
+        if self.next
+        self.next.prev = self.prev
         # dont need to return value
         # need to update head and tail
-        
+        '''
         if self.head is None:
             return None
         elif self.head == self.tail:
@@ -112,10 +126,25 @@ class DoublyLinkedList:
             node.delete()
         else: 
             node.delete()
-
+        '''
     """
     Finds and returns the maximum value of all the nodes 
     in the List.
     """
     def get_max(self):
-        pass
+        # check if list is empty
+        if self.head is None:
+            return None
+        # keep track at current node
+        # keep track of current sum
+        cur_node = self.head
+        max = self.head.value
+        # loop through all
+        while cur_node:
+            #comparing with cur_max
+            if cur_node > max_value
+                max_value = cur_node.value
+            cur_node = cur_node.next
+        # return max
+        return max_value
+        

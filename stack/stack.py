@@ -25,7 +25,7 @@ class Node:
     def set_next_node(self, new_next):
         self.next_node = new_next
 """
-
+"""
 class LinkedList:
     def __init__(self):
             # what attributes do we need?
@@ -103,9 +103,9 @@ class LinkedList:
     def get_max(self):
         # TODO time permitting
         pass
-
+"""
 ########lINKED LIST#################
-
+"""
 class Stack:        
     class Node:
         __slots__= 'element', 'next'
@@ -145,10 +145,10 @@ print('pop', s.pop())
 s.display()
 s.push(36)
 s.display()
-###################################
-
-########ARRAY######################
 """
+###################################
+"""
+########ARRAY######################
 class Empty(Exception):
     pass
 class Stack:
@@ -182,5 +182,6 @@ print('Length', len(s))
 print('Is empty', s.is_empty())
 print('Popped', s.pop())
 print('Stack', s.storage)
-"""
 ################################################
+"""
+
