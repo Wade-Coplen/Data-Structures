@@ -9,11 +9,11 @@ class ListNode:
         self.prev = prev        
         self.next = next
         self.value = value
-    def delete():
+    def delete(self):
         if self.prev:
-            self.next.prev = self.prev
-        if self.next:
             self.prev.next = self.next
+        if self.next:
+            self.next.prev = self.prev
 """
 Our doubly-linked list class. It holds references to 
 the list's head and tail nodes.
@@ -37,13 +37,14 @@ class DoublyLinkedList:
         # create a new node
         # adding to an empty 
         new_node = ListNode(value)
-        if self is None:
+        if self.head is None:
             self.head = new_node
             self.tail = new_node
 
         # or not empty list
         else:
-            new_node.next = self.head
+            new_node.next = self.head #assign 
+            #self.head.prev = new_node.next
             self.head.prev = new_node
             self.head = new_node
         # update length
@@ -56,13 +57,17 @@ class DoublyLinkedList:
     """
     def remove_from_head(self):
         #save value to return
-
         # delete head
         #update self.head
         # return value
-        value = self.head.value
-        self.delete(self.head)
-        return value
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+
+            value = self.head.value
+            self.delete(self.head)
+            return value
         
             
     """
@@ -78,8 +83,8 @@ class DoublyLinkedList:
             self.tail = new_node
         #if 1 or more nodes
         else:
-            new_node.prev = self.head
-            self.head.next = new_node
+            new_node.prev = self.tail
+            self.tail.next = new_node
             self.tail = new_node
         self.length += 1
             
@@ -102,7 +107,7 @@ class DoublyLinkedList:
         # delete node
         self.delete(node)
         self.add_to_head(node.value)
-        # 
+        
     
         
     """
@@ -110,6 +115,10 @@ class DoublyLinkedList:
     List and inserts it as the new tail node of the List.
     """
     def move_to_end(self, node):
+        if node is self.tail:
+            return
+        self.delete(node)
+        self.add_to_tail(node.value)
         pass
 
     """
@@ -118,10 +127,6 @@ class DoublyLinkedList:
     """
     def delete(self, node):
         '''
-        if self.prev:
-            self.prev.next = self.next
-        if self.next:
-            self.next.prev = self.prev
         # dont need to return value
         # need to update head and tail
         '''
