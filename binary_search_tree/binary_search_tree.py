@@ -14,56 +14,44 @@ class BSTNode:
         self.value = value
         self.left = None
         self.right = None
-    def __init__(self):
         self.root = None
-        self.size = 0
-
+        self.size = 0      
+    def Print(self):
+        print(self.value)
     # Insert the given value into the tree
     def insert(self, value):
-        temp_root = self.root
-        temp_troot = None
-        while troot:
-            temp_troot = temp_root
-            if value < temp_root.value:
-                temp_root = temp_root.left
-            elif value > temp_root.value:
-                temp_root = temp_root.right
-            node = self.BSTNode(value)
-            if self.root:
-                if value < temp_troot.value:
-                    temp_troot.left = node
+        if self.value:
+            if value < self.value:
+                if self.left is None:
+                    self.left= BSTNode(value)
+                else: 
+                    self.left.insert(value)
+            elif value > self.value:
+                if self.right is None:
+                    self.right = BSTNode(value)
                 else:
-                    temp_troot.right = node
-        #Recursive
-            #if value < root
-        #if value < root:
-
-            # if left child is None
-                # add here...something = something else
-            #else:
-               # self.left.insert(value) #recursive
-                # exit loop
-                
-        # IF value >= root, go right(dupes go tot the right)
-            #if right child is None
-                # add here
-            #else: 
-                #self.right.insert(value) #recursive
-                # exit loop
-        pass
+                    self.right.insert(value)
+        '''def Print(self):
+            if self.left:
+                self.left.Print()
+            print( self.value),
+            if self.right:
+                self.right.Print()'''       
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        temp_root = self.root
-        while temp_root:
-            if target < temp_root.value:
-                temp_root = temp_root.left
-            elif target > troot.value:
-                temp_root = temp_root.right
+        
+        
+        while self.root:
+            if target < self.root.value:
+                self.root = self.root.left
+            elif target > self.root.value:
+                self.root = self.root.right
             else:
                 return True
         return False
+        
         # check to see if self.value is target
         # if yes return true
         # if no, go left or right?
@@ -71,12 +59,12 @@ class BSTNode:
     # Return the maximum value found in the tree
     def get_maxValue(self):
         if self.root:
-            return self.get_max(self.root)
+            return self.get_maxValue(self.root)
         # go right until you cannot go anymore
         # return the value at the far right
-    def get_max(self, node):
-        if node.rightChild:
-            return self.get_max(node.rightChild)
+    def get_max(self):
+        if self.right:
+            return self.get_max(self.right)
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -96,6 +84,16 @@ class BSTNode:
 
     # what is our stopping point?
     def in_order_print(self):
+        
+        while self.root:
+            if self.left is None:
+                return self.root
+            if self.value < self.root:
+                return self.left.value
+            if self.value > self.root:
+                return self.right.value
+        print(value)
+
         #using in_order, print nodes in non decreasing order
         #4,2,5,1,3
         #inorder(node):
@@ -103,19 +101,11 @@ class BSTNode:
         #   inorder(node.left)
         #   visit(node)
         #   inorder(node.right)
-        while self.root:
-            if self.left is None:
-                return self.root
-            if self.value < self.root:
-                return self.left
-            if self.value > self.root:
-                return self.right
-
-                    
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
+         
         pass
 
     # Print the value of every node, starting with the given node,
@@ -128,7 +118,8 @@ class BSTNode:
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self):
-        pass
+      pass
+        
 
     # Print Post-order recursive DFT
     def post_order_dft(self):
@@ -154,6 +145,6 @@ print("elegant methods")
 print("pre order")
 bst.pre_order_dft()
 print("in order")
-bst.in_order_dft()
+#bst.in_order_dft()
 print("post order")
 bst.post_order_dft()  
